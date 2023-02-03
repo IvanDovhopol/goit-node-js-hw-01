@@ -21,7 +21,7 @@ const addContact = async newContact => {
 
   const data = { id: v4(), ...newContact };
   contacts.push(data);
-  console.log('Contact add: '.blue, data);
+  console.log(data);
   await fs.writeFile(contactsPath, JSON.stringify(contacts));
 };
 
@@ -32,7 +32,7 @@ const removeContact = async contactId => {
   if (index === -1) return null;
 
   const [contactDeleted] = contacts.splice(index, 1);
-  console.log('Contact deleted: '.yellow, contactDeleted);
+  console.log(contactDeleted);
   await fs.writeFile(contactsPath, JSON.stringify(contacts));
   return contactDeleted;
 };
