@@ -1,27 +1,25 @@
-#Screenshots:
+# goit-node-js-hw-01
 
-# [response list]: https://prnt.sc/4Vrsz0Y5cvab
+# Screenshots:
 
-# [get contact by id]: https://prnt.sc/bvdox2EKZ6zy
+- [response list](https://prnt.sc/4Vrsz0Y5cvab)
 
-# [add contact]: https://prnt.sc/3TwbOGdwlZ-Z
+- [get contact by id](https://prnt.sc/bvdox2EKZ6zy)
 
-# [remove contact]: https://prnt.sc/D2yjUjzpinA1
+- [add contact](https://prnt.sc/3TwbOGdwlZ-Z)
 
-#Command:
+- [remove contact](https://prnt.sc/D2yjUjzpinA1)
 
-# Response list in table
+# Command:
 
+Response list in table:
 node index.js --action list
 
-# Get contact by id
-
+Get contact by id:
 node index.js --action get --id 5
 
-# Add contact
-
+Add contact:
 node index.js --action add --name Mango --email mango@gmail.com --phone 322-22-22
 
-# Remove contact
-
+Remove contact:
 node index.js --action remove --id 3
