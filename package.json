@@ -1,0 +1,31 @@
+{
+  "name": "goit-node-js-hw-01",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "node c:/GitHub/db/contacts.js",
+    "start": "node index.js",
+    "start:dev": "nodemon index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/IvanDovhopol/goit-node-js-hw-01.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/IvanDovhopol/goit-node-js-hw-01/issues"
+  },
+  "homepage": "https://github.com/IvanDovhopol/goit-node-js-hw-01#readme",
+  "devDependencies": {
+    "nodemon": "^2.0.20"
+  },
+  "dependencies": {
+    "colors": "^1.4.0",
+    "commander": "^10.0.0",
+    "nanoid": "^4.0.0",
+    "uuid": "^9.0.0"
+  }
+}
