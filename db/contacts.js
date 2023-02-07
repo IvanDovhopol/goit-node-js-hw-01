@@ -1,40 +1,66 @@
 const fs = require('fs/promises');
 const path = require('path');
 const { v4 } = require('uuid');
+
 require('colors');
 
 const contactsPath = path.join(__dirname, 'contacts.json');
 
 const listContacts = async () => {
-  const contacts = await parseData();
-  console.table(contacts);
+  try {
+    const contacts = await parseData();
+    console.table(contacts);
+  } catch (error) {
+    console.log(`\x1B[31m${error.message}`);
+  }
 };
 
 const getContactById = async contactId => {
-  const contacts = await parseData();
-  const result = contacts.find(contact => contact.id === contactId);
-  console.log(result);
+  try {
+    const contacts = await parseData();
+    const result = contacts.find(contact => contact.id === contactId);
+
+    if (!result) {
+      console.log('Contact not found'.red);
+      return null;
+    }
+
+    console.log(result);
+  } catch (error) {
+    console.log(`\x1B[31m${error.message}`);
+  }
 };
 
 const addContact = async newContact => {
-  const contacts = await parseData();
+  try {
+    const contacts = await parseData();
 
-  const data = { id: v4(), ...newContact };
-  contacts.push(data);
-  console.log(data);
-  await fs.writeFile(contactsPath, JSON.stringify(contacts));
+    const data = { id: v4(), ...newContact };
+    contacts.push(data);
+    console.log(data);
+    await fs.writeFile(contactsPath, JSON.stringify(contacts));
+  } catch (error) {
+    console.log(`\x1B[31m${error.message}`);
+  }
 };
 
 const removeContact = async contactId => {
-  const contacts = await parseData();
-  const index = contacts.findIndex(contact => contact.id === contactId);
+  try {
+    const contacts = await parseData();
+    const index = contacts.findIndex(contact => contact.id === contactId);
 
-  if (index === -1) return null;
+    if (index === -1) {
+      console.log('Contact not found'.red);
+      return null;
+    }
 
-  const [contactDeleted] = contacts.splice(index, 1);
-  console.log(contactDeleted);
-  await fs.writeFile(contactsPath, JSON.stringify(contacts));
-  return contactDeleted;
+    const [contactDeleted] = contacts.splice(index, 1);
+    console.log(contactDeleted);
+    await fs.writeFile(contactsPath, JSON.stringify(contacts));
+    return contactDeleted;
+  } catch (error) {
+    console.log(`\x1B[31m${error.message}`);
+  }
 };
 
 module.exports = {
@@ -45,7 +71,11 @@ module.exports = {
 };
 
 async function parseData() {
-  const data = await fs.readFile(contactsPath, 'utf8');
-  const contacts = JSON.parse(data);
-  return contacts;
+  try {
+    const data = await fs.readFile(contactsPath, 'utf8');
+    const contacts = JSON.parse(data);
+    return contacts;
+  } catch (error) {
+    console.log(`\x1B[31m${error.message}`);
+  }
 }

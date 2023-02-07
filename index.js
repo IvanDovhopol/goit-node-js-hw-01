@@ -14,17 +14,18 @@ const argv = program.opts();
 function invokeAction({ action, id, name, email, phone }) {
   switch (action) {
     case 'list':
-      console.log(argv, '\n');
+      console.log('GET 200'.green, argv, '\n');
       contacts.listContacts();
+
       break;
 
     case 'get':
-      console.log(argv, '\n');
+      console.log('GET 200'.green, argv, '\n');
       contacts.getContactById(id);
       break;
 
     case 'add':
-      console.log(argv, '\n');
+      console.log('POST 201'.blue, argv, '\n');
       contacts.addContact({
         name,
         email,
@@ -33,7 +34,7 @@ function invokeAction({ action, id, name, email, phone }) {
       break;
 
     case 'remove':
-      console.log(argv, '\n');
+      console.log('DELETE 204'.yellow, argv, '\n');
       contacts.removeContact(id);
       break;
 
